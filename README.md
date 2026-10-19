@@ -12,7 +12,7 @@ Explore how listing data is delivered by the website, identify the public listin
 | File | Purpose |
 |---|---|
 | [`Task 1_Web scraping.ipynb`](Task%201_Web%20scraping.ipynb) | Step-by-step investigation of the website, API and pagination, followed by data collection |
-| [`equipment_listings_raw.json`](equipment_listings_raw.json) | Collected raw listing records; input for Task 2 |
+| [`data/equipment_listings_raw.json`](data/equipment_listings_raw.json) | Collected raw listing records; input for Task 2 |
 | [`requirements.txt`](requirements.txt) | Python dependencies |
 | [`README.md`](README.md) | Project overview and run instructions |
 
@@ -23,7 +23,7 @@ Explore how listing data is delivered by the website, identify the public listin
 3. Test the endpoint and confirm that pagination returns different pages.
 4. Retrieve approved listings page by page, checking HTTP responses and pausing between requests.
 5. Retain analysis-relevant fields and omit seller contact and owner details.
-6. Save the results to `equipment_listings_raw.json`.
+6. Save the results to `data/equipment_listings_raw.json`.
 
 ## Data snapshot
 
@@ -38,7 +38,7 @@ python -m pip install -r requirements.txt
 jupyter notebook
 ```
 
-Open `Task 1_Web scraping.ipynb` and run the cells in order. The source website and API must be reachable for live collection. The existing JSON file is included so the downstream analysis can use the saved snapshot without immediately re-scraping the site.
+Open `Task 1_Web scraping.ipynb` and run the cells in order. The source website and API must be reachable for live collection. The existing JSON snapshot is included so the downstream analysis can use the saved snapshot without immediately re-scraping the site.
 
 ## Project sequence
 
@@ -51,3 +51,9 @@ Open `Task 1_Web scraping.ipynb` and run the cells in order. The source website 
 This is an educational snapshot of public listings, not a census of Nigeria's equipment market. Follow the website's terms and applicable rules, avoid collecting personal/contact fields, use a considerate request rate, and do not treat advertised details as independently verified facts.
 
 *CodeAlpha Data Analytics Internship · Task 1: Web Scraping*
+
+
+## Folder layout
+
+- `data/` — saved raw listing snapshot
+- `Task 1_Web scraping.ipynb` — collection notebook
