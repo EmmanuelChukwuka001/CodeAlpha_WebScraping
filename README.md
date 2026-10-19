@@ -1,52 +1,53 @@
-# CodeAlpha Web Scraping — Nigerian Equipment Marketplace
+# CodeAlpha Task 1: Web Scraping
+## Nigerian Equipment Marketplace
 
-This repository contains **Task 1** of my CodeAlpha Data Analytics internship. The project explores how to collect publicly available equipment-listing data from the Nigerian equipment marketplace website and prepare a structured dataset for analysis.
+This repository contains **Task 1 — Web Scraping** for the CodeAlpha Data Analytics Internship. The notebook collects publicly available equipment listings from [Equipment Marketplace Nigeria](https://equipmentmarket.ng/) and saves structured records for the EDA and visualization stages.
 
-## Project objective
+## Objective
 
-- Inspect the public website and its listing structure.
-- Explore the site's public listings API and pagination.
-- Retrieve approved listings in pages using Python.
-- Keep only fields needed for analysis and omit seller contact/owner fields for privacy.
-- Save the collected records for the downstream EDA and visualization tasks.
+Explore how listing data is delivered by the website, identify the public listings endpoint, test pagination, and collect a reproducible snapshot of approved listings while minimizing personal data collection.
 
-## Tools and libraries
+## Repository contents
 
-- Python
-- `requests` for HTTP requests
-- `json` for structured data storage
-- `pandas` for tabular data inspection and preparation
-- Jupyter Notebook
+| File | Purpose |
+|---|---|
+| [`Task 1_Web scraping.ipynb`](Task%201_Web%20scraping.ipynb) | Step-by-step investigation of the website, API and pagination, followed by data collection |
+| [`equipment_listings_raw.json`](equipment_listings_raw.json) | Collected raw listing records; input for Task 2 |
+| [`requirements.txt`](requirements.txt) | Python dependencies |
+| [`README.md`](README.md) | Project overview and run instructions |
 
 ## Workflow
 
-1. Inspect the marketplace website and understand how listing data is exposed.
-2. Test the public listings endpoint and inspect the response structure.
-3. Test pagination with a small page of results.
-4. Iterate through pages with request timeouts and response-status checks.
-5. Retain the fields relevant to equipment inventory analysis.
-6. Save the resulting dataset for Tasks 2 and 3.
+1. Inspect the website HTML and confirm that listing cards are loaded dynamically.
+2. Review `robots.txt` and inspect the site's JavaScript bundles to locate the public listings API.
+3. Test the endpoint and confirm that pagination returns different pages.
+4. Retrieve approved listings page by page, checking HTTP responses and pausing between requests.
+5. Retain analysis-relevant fields and omit seller contact and owner details.
+6. Save the results to `equipment_listings_raw.json`.
 
-## Running the notebook
+## Data snapshot
 
-1. Install Python 3.10+ and Jupyter.
-2. Install the dependencies:
+The notebook records **245 approved listings across 25 pages** in the collection run. The downstream EDA filters this dataset to **158 equipment listings** after excluding service listings. Live website content may change, so a new run may produce different results.
 
-   ```bash
-   pip install requests pandas jupyter
-   ```
+## Run locally
 
-3. Open the web-scraping notebook in Jupyter Notebook or JupyterLab.
-4. Run cells in order. The source website/API must be reachable for live collection.
+Python 3.10 or newer is recommended.
 
-## Output and next steps
+```bash
+python -m pip install -r requirements.txt
+jupyter notebook
+```
 
-The intended output is a JSON dataset of public listing fields that can be used by the Exploratory Data Analysis and Data Visualization notebooks. The downstream notebooks expect the collected file to be available locally.
+Open `Task 1_Web scraping.ipynb` and run the cells in order. The source website and API must be reachable for live collection. The existing JSON file is included so the downstream analysis can use the saved snapshot without immediately re-scraping the site.
 
-## Responsible data collection
+## Project sequence
 
-This project is for learning and analysis. Use only publicly available information, follow the website's terms and applicable laws, avoid collecting personal/contact fields, and make requests at a considerate rate. Live API responses may change over time.
+- **Task 1 — Web Scraping:** this repository
+- **Task 2 — Exploratory Data Analysis:** [CodeAlpha_ExploratoryDataAnalysis](https://github.com/EmmanuelChukwuka001/CodeAlpha_ExploratoryDataAnalysis)
+- **Task 3 — Data Visualization:** [CodeAlpha_DataVisualization](https://github.com/EmmanuelChukwuka001/CodeAlpha_DataVisualization)
 
-## Internship
+## Responsible collection and limitations
 
-Completed as part of the **CodeAlpha Data Analytics Internship** — Task 1: Web Scraping.
+This is an educational snapshot of public listings, not a census of Nigeria's equipment market. Follow the website's terms and applicable rules, avoid collecting personal/contact fields, use a considerate request rate, and do not treat advertised details as independently verified facts.
+
+*CodeAlpha Data Analytics Internship · Task 1: Web Scraping*
